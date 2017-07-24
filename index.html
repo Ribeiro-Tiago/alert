@@ -10,15 +10,14 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <script src="alert.js"></script>
+        <script src="js/alert-message.js"></script>
         <script>
             window.onload = function(){
-                alert.config("alert");
-                alert.showAlert("aaa", "success");
+                window.message = new Message("alert");
+                message.alert({text: "text"})
+                message.confirm({text: "mensagem muito fixe", okText: "YAAAAS", cancelText: "NAAAAS"});
             };
         </script>
-
-        <link rel="stylesheet" href="style.css">
 
     </head>
     <body>
