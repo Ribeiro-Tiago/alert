@@ -61,8 +61,30 @@ var Message = (function(){
     var warningBgColor = "#e4daa4";
     var warningBorderColor = "#c3a25d";
     
+    // btn colors
+    var btnSuccessColor = "#";
+    var btnSuccessBgColor = "#";
+    var btnSuccessBorderColor = "#";
+
+    var btnInformationColor = "#ecf4fb";
+    var btnInformationBgColor = "#317ea5";
+    var btnInformationBorderColor = "#abafb3";
+
+    var btnErrorColor = "#";
+    var btnErrorBgColor = "#";
+    var btnErrorBorderColor = "#";
+
+    var btnWarningColor = "#";
+    var btnWarningBgColor = "#";
+    var btnWarningBorderColor = "#";
+
     // icons
     var showIcons = true;
+    var successImg = "img/alert-success.png";
+    var errorImg = "img/alert-error.png";
+    var warningImg = "img/alert-warning.png";
+    var informationImg = "img/alert-information.png";
+
 
     // confirm specific
     var okEvent = function(){
@@ -94,6 +116,14 @@ var Message = (function(){
             " #" + element + " .alert-warning{color: " + warningColor + "; background-color:" + warningBgColor + "; border-color: " + warningBorderColor + ";}" +
             " #" + element + " .alert-error{color: " + errorColor + "; background-color:" + errorBgColor + "; border-color: " + errorBorderColor + ";}" +
             " #" + element + " .alert-removing{-webkit-transition: opacity 1s ease-in-out;-moz-transition: opacity 1s ease-in-out;-ms-transition: opacity 1s ease-in-out;-o-transition: opacity 1s ease-in-out;opacity: 0;}";
+
+            .alert-button-group { padding: 5px; }
+            .alert-button-group button { margin-right: 10px; border-radius: 10px; cursor: pointer; background: #317ea5; border-color: #abafb3; border-width: 2px; color: #ecf4fb; outline: none; padding: 7px 10px; font-weight: bold; }
+            .alert-button-group button:hover { background: #ecf4fb; color: #317ea5; }
+            .alert-content img { width: 32px; height: 32px; float: left; position: relative; left: 10px; }
+            .alert-content.right img { float: right; right: 10px; }
+            .alert-content p { width: 90%; margin-bottom: 5px; }
+            .alert-content.right p { width: 85%; }
 
         document.getElementsByTagName('head')[0].appendChild(css);
     }
@@ -276,10 +306,12 @@ var Message = (function(){
      * @param {object} configs - options that the user might want to customize
      */
     function Message(elem, configs){
-        if (isEmpty(elem))
-            throw new Error("Element ID is invalid!");
-        
-        element = elem;
+        if (isEmpty(elem)){
+            element = createDOMElem("div", {"id": "alert-element"});
+            document.body.appendChild(element);
+        }
+        else
+            element = elem;
 
         checkConfigs(configs);        
 
