@@ -1,4 +1,6 @@
 # alert
 Customizable and clean alert library 
 
-Check projects tab to see the roadmap for this library
+[Roadmap](https://github.com/Ribeiro-Tiago/alert-message/projects/1)
+
+## UNDER CONSTURCTION 
